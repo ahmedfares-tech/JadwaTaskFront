@@ -13,7 +13,7 @@ import ProductCard from '../../components/cardDesign';
 import AddIcon from '@material-ui/icons/Add';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-export default function createProducts() {
+export default function listProductsDash() {
     const [isLoading, setIsLoading] = useState(true)
     const [products, setProducts] = useState()
     const [order, setOrder] = useState('DESC');
@@ -79,7 +79,7 @@ export default function createProducts() {
                     products.map((row) => {
                         return (
                             <Grid item xs={12} md={6} lg={6}>
-                                <ProductCard title={row.name} description={row.description} price={row.price} category={row.category.name} image={row.image} />
+                                <ProductCard id={row.id} title={row.name} description={row.description} price={row.price} category={row.category.name} image={row.image} />
                             </Grid>
                         );
 

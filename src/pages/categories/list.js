@@ -15,7 +15,7 @@ import './style.css';
 
 
 
-export default function createProducts() {
+export default function listCategory() {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(true)

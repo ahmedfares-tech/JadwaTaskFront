@@ -7,9 +7,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import Grid from '@material-ui/core/Grid'
-import ButtonBase from '@material-ui/core/ButtonBase'
+
 import { baseBackendURLImages } from '../config/global';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function ImgMediaCard({
     id,
     title,
@@ -18,12 +18,15 @@ export default function ImgMediaCard({
     price,
     category
 }) {
-    const navigate = useNavigate();
+
+
     return (
         <Card >
-            <ButtonBase
-
-                onClick={(e) => { navigate(`/product/${id}`) }}
+            <Link
+                style={{ textDecoration: 'none', color: 'black' }}
+                variant="body2"
+                color="black"
+                to={`/dashboard/product/edit/${id}`}
             >
                 <CardActionArea>
                     <CardMedia
@@ -60,7 +63,8 @@ export default function ImgMediaCard({
                         </Grid>
                     </CardActions>
                 </CardActionArea>
-            </ButtonBase>
+            </Link>
+
         </Card >
     );
 }

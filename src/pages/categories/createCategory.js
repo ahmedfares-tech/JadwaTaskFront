@@ -19,7 +19,7 @@ import './style.css';
 
 
 
-export default function createUsers() {
+export default function createCategory() {
     const navigate = useNavigate();
     const [categoryFilter, setCategoryFilter] = useState()
     const [categories, setCategories] = useState([]);

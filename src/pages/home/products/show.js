@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react-hooks/rules-of-hooks */
@@ -21,7 +22,7 @@ import {
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-
+import { baseBackendURLImages } from '../../../config/global';
 
 export default function LandShow() {
     const [isLoading, setIsLoading] = useState(true)
@@ -47,8 +48,6 @@ export default function LandShow() {
     }, [isLoading]);
 
     useEffect(() => {
-        //     changeTotal();
-        //     changeTotal();
         axiosRequest.post('products/calculation', {
             options: choosedOptions,
             qty: qty,
@@ -70,7 +69,7 @@ export default function LandShow() {
             }).catch(err => {
                 console.log(err);
             })
-        }else{
+        } else {
             navigate('/login');
         }
     }
@@ -94,10 +93,11 @@ export default function LandShow() {
                             main[key].map((element) => {
                                 if (element.id === choosedOptions[key]) {
                                     optionsPrice(element).then(res => {
-                                        setTotal(TotalQty + parseFloat(element.price))
+                                        setTotal(TotalQty + parseFloat(element.price));
                                     });
 
                                 };
+                                return 0;
                             });
                         }
                         else {
@@ -109,6 +109,7 @@ export default function LandShow() {
                                                 setTotal(TotalQty + parseFloat(element.price))
                                             });
                                         }
+                                        return 0;
                                     })
                                 }
                             })
@@ -148,7 +149,7 @@ export default function LandShow() {
 
                 >
                     <Grid item xs={12} md={6} lg={4}>
-                        <img src="http://127.0.0.1:8000/storage/products/1/163102821414.PNG" alt="test For Now" style={{ height: '500px' }} />
+                        <img src={baseBackendURLImages + product.image} alt="test For Now" style={{ height: '500px' }} />
                     </Grid>
                     <Grid item xs={12} md={8} lg={6}>
 
@@ -198,7 +199,7 @@ export default function LandShow() {
                                                                         choose {index}
                                                                     </MenuItem>
                                                                     {option[index].map((row, pos) => {
-                                                                        return (<MenuItem key={row.id} value={pos}>{row.value} - {row.price} LE</MenuItem>);
+                                                                        return (<MenuItem key={row.id} value={pos}>{row.value}{row.price > 0 ? ' - ' + row.price + 'LE' : <></>}</MenuItem>);
                                                                     })}
 
                                                                 </Select>
