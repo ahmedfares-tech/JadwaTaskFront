@@ -5,6 +5,7 @@ import UserRegister from './pages/users/register';
 import CategoryCreate from './pages/categories/createCategory';
 import ListCategory from './pages/categories/list';
 import ProductCreate from './pages/products/createProducts';
+import ProductEdit from './pages/products/editProducts';
 import ListProduct from './pages/products/list';
 // LandPage
 import LandPage from './layouts/landpage';
@@ -25,6 +26,7 @@ export default function Router(props) {
           { path: '/categories/create', element: <CategoryCreate {...props} /> },
           { path: '/products', element: <ListProduct {...props} /> },
           { path: '/products/create', element: <ProductCreate {...props} /> },
+          { path: '/product/edit/:id', element: <ProductEdit {...props} /> },
         ]
       }
     }
